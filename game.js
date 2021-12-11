@@ -75,17 +75,21 @@ function playGame() {
   while (gameOver === false) {
     turn++;
 
+    console.log(
+      `------------------------Turn: ${turn}------------------------`
+    );
+
     input = prompt(`Turn: ${turn}. Please enter your number`);
     while (inputValidator(input, inputSize)) {
       input = prompt(`Turn: ${turn}. Please enter your number`);
     }
-    console.log(inputValidator(input, inputSize));
 
     inputArr = [];
     inputArr = digitSeparator(input, inputSize, inputArr);
-    console.log(inputArr);
+    console.log(input);
     let dispBull = bullCalc(bulls, inputArr, randomArr, inputSize);
     let dispCow = cowCalc(cows, inputArr, randomArr, inputSize);
+    console.log(`Bulls: ${dispBull}, Cows: ${dispCow}`);
     alert(`You entered ${input}. Bulls: ${dispBull}, Cows: ${dispCow}`);
     if (dispBull === inputSize) {
       alert(`GAME OVER! You finished in ${turn} turns`);
@@ -98,5 +102,3 @@ function playGame() {
     }
   }
 }
-
-playGame();
